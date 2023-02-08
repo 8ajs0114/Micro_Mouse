@@ -18,12 +18,12 @@ OUTPUT TRANSLATION MAP
    OUTPUT FILES: a_Spider_Mine.hex [b0..b15]
 
    CONTENTS: 003e8000..003e8001   codestart Data Width=2   
-             003e8002..003e9940   .text Data Width=2   
-             003e9942..003e9c42   .econst Data Width=2   
-             003e9c43..003e9ec2   VFD_FONT Data Width=2   
-             003e9ec3..003e9fa8   .cinit Data Width=2   
-             003e9fa9..003e9fcb   ramfuncs Data Width=2   
-             003e9fcc..003e9fdf   IQmath Data Width=2   
+             003e8002..003e99bb   .text Data Width=2   
+             003e99bc..003e9cb2   .econst Data Width=2   
+             003e9cb3..003e9f32   VFD_FONT Data Width=2   
+             003e9f33..003ea018   .cinit Data Width=2   
+             003ea019..003ea03b   ramfuncs Data Width=2   
+             003ea03c..003ea04f   IQmath Data Width=2   
 
 --------------------------------------------------------------------------------
 00000000..003fffff  Page=1  Memory Width=16  ROM Width=16  "*DEFAULT PAGE 1*"

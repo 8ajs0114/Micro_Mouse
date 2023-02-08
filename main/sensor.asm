@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Mon Feb 06 23:33:01 2023                 *
+;* Date/Time created: Wed Feb 08 22:45:23 2023                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -76,13 +76,13 @@ DW$9	.dwtag  DW_TAG_variable, DW_AT_name("GpioDataRegs"), DW_AT_symbol_name("_Gp
 	.dwattr DW$9, DW_AT_type(*DW$T$76)
 	.dwattr DW$9, DW_AT_declaration(0x01)
 	.dwattr DW$9, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\JS\AppData\Local\Temp\TI00810 C:\Users\JS\AppData\Local\Temp\TI0084 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\JS\AppData\Local\Temp\TI0082 --template_info_file C:\Users\JS\AppData\Local\Temp\TI0086 --object_file sensor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile --silicon_version=28 
+;	..\Compiler\bin\opt2000.exe C:\Users\JS\AppData\Local\Temp\TI53210 C:\Users\JS\AppData\Local\Temp\TI5324 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\JS\AppData\Local\Temp\TI5322 --template_info_file C:\Users\JS\AppData\Local\Temp\TI5326 --object_file sensor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile --silicon_version=28 
 	.sect	".text"
-	.global	_Sensor_Value
+	.global	_SENSOR_ISR
 
-DW$10	.dwtag  DW_TAG_subprogram, DW_AT_name("Sensor_Value"), DW_AT_symbol_name("_Sensor_Value")
-	.dwattr DW$10, DW_AT_low_pc(_Sensor_Value)
+DW$10	.dwtag  DW_TAG_subprogram, DW_AT_name("SENSOR_ISR"), DW_AT_symbol_name("_SENSOR_ISR")
+	.dwattr DW$10, DW_AT_low_pc(_SENSOR_ISR)
 	.dwattr DW$10, DW_AT_high_pc(0x00)
 	.dwattr DW$10, DW_AT_begin_file("sensor.c")
 	.dwattr DW$10, DW_AT_begin_line(0x27)
@@ -93,7 +93,7 @@ DW$10	.dwtag  DW_TAG_subprogram, DW_AT_name("Sensor_Value"), DW_AT_symbol_name("
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _Sensor_Value                 FR SIZE:   4           *
+;* FNAME: _SENSOR_ISR                   FR SIZE:   4           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
@@ -107,7 +107,7 @@ DW$10	.dwtag  DW_TAG_subprogram, DW_AT_name("Sensor_Value"), DW_AT_symbol_name("
 ;* Using -g (debug) with optimization (-o3) may disable key op *
 ;*                                                             *
 ;***************************************************************
-_Sensor_Value:
+_SENSOR_ISR:
 ;*** 42	-----------------------    PieCtrlRegs.PIEACK.all = 1u;
 ;*** 43	-----------------------    GpioDataRegs.GPASET.all = 1L<<sensor_array[sensor_count];
 ;*** 51	-----------------------    C$1 = &adc_array[0];
@@ -206,10 +206,10 @@ DW$11	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
 	.dwendtag DW$10
 
 	.sect	".text"
-	.global	_ADC_TIMER_ISR
+	.global	_ADC_ISR
 
-DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("ADC_TIMER_ISR"), DW_AT_symbol_name("_ADC_TIMER_ISR")
-	.dwattr DW$12, DW_AT_low_pc(_ADC_TIMER_ISR)
+DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("ADC_ISR"), DW_AT_symbol_name("_ADC_ISR")
+	.dwattr DW$12, DW_AT_low_pc(_ADC_ISR)
 	.dwattr DW$12, DW_AT_high_pc(0x00)
 	.dwattr DW$12, DW_AT_begin_file("sensor.c")
 	.dwattr DW$12, DW_AT_begin_line(0x3a)
@@ -220,7 +220,7 @@ DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("ADC_TIMER_ISR"), DW_AT_symbol_name(
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _ADC_TIMER_ISR                FR SIZE:   2           *
+;* FNAME: _ADC_ISR                      FR SIZE:   2           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
@@ -234,7 +234,7 @@ DW$12	.dwtag  DW_TAG_subprogram, DW_AT_name("ADC_TIMER_ISR"), DW_AT_symbol_name(
 ;* Using -g (debug) with optimization (-o3) may disable key op *
 ;*                                                             *
 ;***************************************************************
-_ADC_TIMER_ISR:
+_ADC_ISR:
 ;*** 62	-----------------------    PieCtrlRegs.PIEACK.all = 1u;
 ;*** 63	-----------------------    GpioDataRegs.GPACLEAR.all = 1L<<sensor_array[sensor_count];
 ;*** 65	-----------------------    adc_value_sum = AdcMirror.ADCRESULT0;

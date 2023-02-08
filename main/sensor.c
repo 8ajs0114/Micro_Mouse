@@ -36,7 +36,7 @@ volatile Uint32 sensor_array[ SEN_NUM] = {SEN0, SEN3, SEN1,SEN4, SEN2, SEN5};
 volatile Uint32 adc_array[ ADC_NUM ] = {ADC0, ADC3, ADC1,ADC4, ADC2, ADC5};
 // ADC expressed as 16bit, defined in Sensor.h file. 
 
-interrupt void Sensor_Value(void)
+interrupt void SENSOR_ISR(void)
 {	
 	// sensor
 	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
@@ -55,7 +55,7 @@ interrupt void Sensor_Value(void)
 	AdcRegs.ADCTRL2.bit.SOC_SEQ1 = 1; // adc interrupt start = adc 값 변환 시작 
 }
 
-interrupt void ADC_TIMER_ISR(void)
+interrupt void ADC_ISR(void)
 {
 	adc_value_sum = 0;
 	

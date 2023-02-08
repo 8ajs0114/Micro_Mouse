@@ -15,8 +15,8 @@
 
 #ifndef __SENSOR_H__
 #define __SENSOR_H__
-interrupt void Sensor_Value(void);
-interrupt void ADC_TIMER_ISR(void);
+interrupt void SENSOR_ISR(void);
+interrupt void ADC_ISR(void);
 
 #define   ADC0   0x0000
 #define   ADC1   0x1111

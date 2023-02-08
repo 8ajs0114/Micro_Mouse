@@ -1,0 +1,6 @@
+---- iq27_distance_from_interrupt Matches (5 in 2 files) ----
+Motor.c (main):	R_motor.iq27_distance_from_interrupt = _IQ27mpyIQX( ( int32 )( R_motor.int16_qep_value ) << 21 , 21 , iq30_DISTANCE_PER_TICK , 30 ); 
+Motor.c (main):	L_motor.iq27_distance_from_interrupt = _IQ27mpyIQX( ( int32 )( L_motor.int16_qep_value ) << 21 , 21 , iq30_DISTANCE_PER_TICK , 30 ); 
+Motor.c (main):	R_motor.iq15_distance_sum += ( R_motor.iq27_distance_from_interrupt >> 12 );
+Motor.c (main):	L_motor.iq15_distance_sum += ( L_motor.iq27_distance_from_interrupt >> 12 );
+Struct.h (include):	_iq27	iq27_distance_from_interrupt;

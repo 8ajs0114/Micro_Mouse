@@ -15,6 +15,7 @@
 #ifndef __MOTOR__
 #define __MOTOR__
 
+interrupt void MOTOR_ISR (void);
 
 
 #endif
