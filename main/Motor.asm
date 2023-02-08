@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Wed Feb 08 22:45:23 2023                 *
+;* Date/Time created: Wed Feb 08 23:54:31 2023                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -35,8 +35,8 @@ DW$8	.dwtag  DW_TAG_variable, DW_AT_name("RightQepRegs"), DW_AT_symbol_name("_Ri
 	.dwattr DW$8, DW_AT_type(*DW$T$53)
 	.dwattr DW$8, DW_AT_declaration(0x01)
 	.dwattr DW$8, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\JS\AppData\Local\Temp\TI54410 C:\Users\JS\AppData\Local\Temp\TI5444 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\JS\AppData\Local\Temp\TI5442 --template_info_file C:\Users\JS\AppData\Local\Temp\TI5446 --object_file Motor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile --silicon_version=28 
+;	..\Compiler\bin\opt2000.exe C:\Users\JS\AppData\Local\Temp\TI62010 C:\Users\JS\AppData\Local\Temp\TI6204 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\JS\AppData\Local\Temp\TI6202 --template_info_file C:\Users\JS\AppData\Local\Temp\TI6206 --object_file Motor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile --silicon_version=28 
 	.sect	".text"
 	.global	_MOTOR_ISR
 
@@ -67,11 +67,11 @@ DW$9	.dwtag  DW_TAG_subprogram, DW_AT_name("MOTOR_ISR"), DW_AT_symbol_name("_MOT
 ;*                                                             *
 ;***************************************************************
 _MOTOR_ISR:
-;*** 27	-----------------------    L_motor.u16_qep_count = RightQepRegs.QPOSCNT;
-;*** 28	-----------------------    R_motor.u16_qep_count = LeftQepRegs.QPOSCNT;
-;*** 31	-----------------------    *(&RightQepRegs+21L) |= 0x80u;
-;*** 32	-----------------------    *(&LeftQepRegs+21L) |= 0x80u;
-;*** 42	-----------------------    if ( R_motor.u16_qep_count > 1024u ) goto g3;
+;*** 28	-----------------------    L_motor.u16_qep_count = RightQepRegs.QPOSCNT;
+;*** 29	-----------------------    R_motor.u16_qep_count = LeftQepRegs.QPOSCNT;
+;*** 32	-----------------------    *(&RightQepRegs+21L) |= 0x80u;
+;*** 33	-----------------------    *(&LeftQepRegs+21L) |= 0x80u;
+;*** 43	-----------------------    if ( R_motor.u16_qep_count > 1024u ) goto g3;
         ASP
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
@@ -95,81 +95,67 @@ DW$10	.dwtag  DW_TAG_variable, DW_AT_name("S$2"), DW_AT_symbol_name("S$2")
 DW$11	.dwtag  DW_TAG_variable, DW_AT_name("S$1"), DW_AT_symbol_name("S$1")
 	.dwattr DW$11, DW_AT_type(*DW$T$10)
 	.dwattr DW$11, DW_AT_location[DW_OP_reg0]
-	.dwpsn	"Motor.c",27,2
-        MOVW      DP,#_RightQepRegs
-        MOVL      ACC,@_RightQepRegs    ; |27| 
-        MOVW      DP,#_L_motor
-        MOV       @_L_motor,AL          ; |27| 
 	.dwpsn	"Motor.c",28,2
+        MOVW      DP,#_RightQepRegs
+        MOVL      ACC,@_RightQepRegs    ; |28| 
+        MOVW      DP,#_L_motor
+        MOV       @_L_motor,AL          ; |28| 
+	.dwpsn	"Motor.c",29,2
         MOVW      DP,#_LeftQepRegs
-        MOVL      ACC,@_LeftQepRegs     ; |28| 
+        MOVL      ACC,@_LeftQepRegs     ; |29| 
         MOVW      DP,#_R_motor
-        MOV       @_R_motor,AL          ; |28| 
-	.dwpsn	"Motor.c",31,2
-        MOVW      DP,#_RightQepRegs+21
-        OR        @_RightQepRegs+21,#0x0080 ; |31| 
+        MOV       @_R_motor,AL          ; |29| 
 	.dwpsn	"Motor.c",32,2
+        MOVW      DP,#_RightQepRegs+21
+        OR        @_RightQepRegs+21,#0x0080 ; |32| 
+	.dwpsn	"Motor.c",33,2
         MOVW      DP,#_LeftQepRegs+21
-        OR        @_LeftQepRegs+21,#0x0080 ; |32| 
-	.dwpsn	"Motor.c",42,2
+        OR        @_LeftQepRegs+21,#0x0080 ; |33| 
+	.dwpsn	"Motor.c",43,2
         MOVW      DP,#_R_motor
-        CMP       @_R_motor,#1024       ; |42| 
-        BF        L1,HI                 ; |42| 
-        ; branchcc occurs ; |42| 
-;*** 42	-----------------------    S$2 = -(int)R_motor.u16_qep_count;
-;*** 42	-----------------------    goto g4;
-        MOV       AL,@_R_motor          ; |42| 
-        NEG       AL                    ; |42| 
-        BF        L2,UNC                ; |42| 
-        ; branch occurs ; |42| 
+        CMP       @_R_motor,#1024       ; |43| 
+        BF        L1,HI                 ; |43| 
+        ; branchcc occurs ; |43| 
+;*** 43	-----------------------    S$2 = -(int)R_motor.u16_qep_count;
+;*** 43	-----------------------    goto g4;
+        MOV       AL,@_R_motor          ; |43| 
+        NEG       AL                    ; |43| 
+        BF        L2,UNC                ; |43| 
+        ; branch occurs ; |43| 
 L1:    
 ;***	-----------------------g3:
-;*** 42	-----------------------    S$2 = 2049u-R_motor.u16_qep_count;
-        MOV       AL,#2049              ; |42| 
-        SUB       AL,@_R_motor          ; |42| 
+;*** 43	-----------------------    S$2 = 2049u-R_motor.u16_qep_count;
+        MOV       AL,#2049              ; |43| 
+        SUB       AL,@_R_motor          ; |43| 
 L2:    
 ;***	-----------------------g4:
-;*** 42	-----------------------    R_motor.int16_qep_value = S$2;
-;*** 43	-----------------------    (L_motor.u16_qep_count > 1024u) ? (S$1 = (int)(L_motor.u16_qep_count-2049u)) : (S$1 = (int)L_motor.u16_qep_count);
-        MOV       @_R_motor+1,AL        ; |42| 
-	.dwpsn	"Motor.c",43,2
+;*** 43	-----------------------    R_motor.int16_qep_value = S$2;
+;*** 44	-----------------------    (L_motor.u16_qep_count > 1024u) ? (S$1 = (int)(L_motor.u16_qep_count-2049u)) : (S$1 = (int)L_motor.u16_qep_count);
+        MOV       @_R_motor+1,AL        ; |43| 
+	.dwpsn	"Motor.c",44,2
         MOVW      DP,#_L_motor
-        CMP       @_L_motor,#1024       ; |43| 
-        BF        L3,LOS                ; |43| 
-        ; branchcc occurs ; |43| 
-        MOV       AL,@_L_motor          ; |43| 
-        SUB       AL,#2049              ; |43| 
-        BF        L4,UNC                ; |43| 
-        ; branch occurs ; |43| 
+        CMP       @_L_motor,#1024       ; |44| 
+        BF        L3,LOS                ; |44| 
+        ; branchcc occurs ; |44| 
+        MOV       AL,@_L_motor          ; |44| 
+        SUB       AL,#2049              ; |44| 
+        BF        L4,UNC                ; |44| 
+        ; branch occurs ; |44| 
 L3:    
-        MOV       AL,@_L_motor          ; |43| 
+        MOV       AL,@_L_motor          ; |44| 
 L4:    
-;*** 43	-----------------------    L_motor.int16_qep_value = S$1;
-;*** 48	-----------------------    R_motor.iq27_distance_from_interrupt = __IQxmpy((long)R_motor.int16_qep_value<<21, 10294371L, 8);
-;*** 49	-----------------------    L_motor.iq27_distance_from_interrupt = __IQxmpy((long)L_motor.int16_qep_value<<21, 10294371L, 8);
-;*** 52	-----------------------    R_motor.iq15_distance_sum += R_motor.iq27_distance_from_interrupt>>12;
-;*** 53	-----------------------    L_motor.iq15_distance_sum += L_motor.iq27_distance_from_interrupt>>12;
-;*** 53	-----------------------    return;
-        MOV       @_L_motor+1,AL        ; |43| 
-	.dwpsn	"Motor.c",48,2
+;*** 44	-----------------------    L_motor.int16_qep_value = S$1;
+;*** 49	-----------------------    R_motor.iq27_distance_from_interrupt = __IQxmpy((long)R_motor.int16_qep_value<<21, 10294371L, 8);
+;*** 50	-----------------------    L_motor.iq27_distance_from_interrupt = __IQxmpy((long)L_motor.int16_qep_value<<21, 10294371L, 8);
+;*** 53	-----------------------    R_motor.iq15_distance_sum += R_motor.iq27_distance_from_interrupt>>12;
+;*** 54	-----------------------    L_motor.iq15_distance_sum += L_motor.iq27_distance_from_interrupt>>12;
+;*** 54	-----------------------    return;
+        MOV       @_L_motor+1,AL        ; |44| 
+	.dwpsn	"Motor.c",49,2
         SETC      SXM
         MOVW      DP,#_R_motor+1
-        MOV       T,#21                 ; |48| 
-        MOV       ACC,@_R_motor+1       ; |48| 
-        LSLL      ACC,T                 ; |48| 
-        MOVL      XAR6,ACC              ; |48| 
-        MOVL      XT,ACC                ; |48| 
-        MOV       AH,#157
-        MOV       AL,#5219
-        IMPYL     P,XT,ACC              ; |48| 
-        MOVL      XT,XAR6               ; |48| 
-        QMPYL     ACC,XT,ACC            ; |48| 
-        LSL64     ACC:P,#8              ; |48| 
-        MOVL      @_R_motor+6,ACC       ; |48| 
-	.dwpsn	"Motor.c",49,2
-        MOVW      DP,#_L_motor+1
         MOV       T,#21                 ; |49| 
-        MOV       ACC,@_L_motor+1       ; |49| 
+        MOV       ACC,@_R_motor+1       ; |49| 
         LSLL      ACC,T                 ; |49| 
         MOVL      XAR6,ACC              ; |49| 
         MOVL      XT,ACC                ; |49| 
@@ -179,18 +165,32 @@ L4:
         MOVL      XT,XAR6               ; |49| 
         QMPYL     ACC,XT,ACC            ; |49| 
         LSL64     ACC:P,#8              ; |49| 
-        MOVL      @_L_motor+6,ACC       ; |49| 
-	.dwpsn	"Motor.c",52,2
-        MOVW      DP,#_R_motor+6
-        MOVL      ACC,@_R_motor+6       ; |52| 
-        SFR       ACC,12                ; |52| 
-        ADDL      @_R_motor+4,ACC       ; |52| 
+        MOVL      @_R_motor+6,ACC       ; |49| 
+	.dwpsn	"Motor.c",50,2
+        MOVW      DP,#_L_motor+1
+        MOV       T,#21                 ; |50| 
+        MOV       ACC,@_L_motor+1       ; |50| 
+        LSLL      ACC,T                 ; |50| 
+        MOVL      XAR6,ACC              ; |50| 
+        MOVL      XT,ACC                ; |50| 
+        MOV       AH,#157
+        MOV       AL,#5219
+        IMPYL     P,XT,ACC              ; |50| 
+        MOVL      XT,XAR6               ; |50| 
+        QMPYL     ACC,XT,ACC            ; |50| 
+        LSL64     ACC:P,#8              ; |50| 
+        MOVL      @_L_motor+6,ACC       ; |50| 
 	.dwpsn	"Motor.c",53,2
-        MOVW      DP,#_L_motor+6
-        MOVL      ACC,@_L_motor+6       ; |53| 
+        MOVW      DP,#_R_motor+6
+        MOVL      ACC,@_R_motor+6       ; |53| 
         SFR       ACC,12                ; |53| 
-        ADDL      @_L_motor+4,ACC       ; |53| 
-	.dwpsn	"Motor.c",54,1
+        ADDL      @_R_motor+4,ACC       ; |53| 
+	.dwpsn	"Motor.c",54,2
+        MOVW      DP,#_L_motor+6
+        MOVL      ACC,@_L_motor+6       ; |54| 
+        SFR       ACC,12                ; |54| 
+        ADDL      @_L_motor+4,ACC       ; |54| 
+	.dwpsn	"Motor.c",55,1
 	.dwcfa	0x1d, -6
         MOVL      XT,*--SP
 	.dwcfa	0x1d, -4
@@ -203,7 +203,7 @@ L4:
         IRET
         ; return occurs
 	.dwattr DW$9, DW_AT_end_file("Motor.c")
-	.dwattr DW$9, DW_AT_end_line(0x36)
+	.dwattr DW$9, DW_AT_end_line(0x37)
 	.dwattr DW$9, DW_AT_end_column(0x01)
 	.dwendentry
 	.dwendtag DW$9

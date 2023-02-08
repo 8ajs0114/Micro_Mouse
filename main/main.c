@@ -39,6 +39,7 @@ void Variable_Init( void )
 	sensor_count = 0;
 	adc_value_sum = 0;
 	i = 0;
+	pwm = 0;
 
 	memset( (void *)	&L_motor, 	0x00, sizeof(motor_t) );
 	memset( (void *)	&R_motor, 	0x00, sizeof(motor_t) );
@@ -51,7 +52,9 @@ void main(void)
 	System_Init();
 	Variable_Init();
 //	StartCpuTimer0();
-	StartCpuTimer2();
+//	StartCpuTimer2();
+
+	pwm = ( Uint16 )200;
 
 	while( 1 )
 	{	/*
@@ -62,7 +65,7 @@ void main(void)
 		TxPrintf("[4] Value : %4.0f \t",	_IQtoF(sensor_value[3].iq15_4095_value));
 		TxPrintf("[5] Value : %4.0f \n",	_IQtoF(sensor_value[5].iq15_4095_value));
 		*/
-
+		/*
 		//------------------------------------------------------------//
 		// encoder test
 		// Raw QEP Data Check
@@ -76,6 +79,16 @@ void main(void)
 		// Moved Distance Data Check
 		TxPrintf("Left Qep : %f\t", _IQtoF(L_motor.iq15_distance_sum));
 		TxPrintf("Right Qep : %f\n", _IQtoF(R_motor.iq15_distance_sum));		
+		*/
+
+		IN1_LEFT_SET = ON;
+		IN2_LEFT_CLEAR = ON;
+		IN1_RIGHT_CLEAR = ON;
+		IN2_RIGHT_SET = ON;
+		
+		PWM_LEFT = pwm;	
+		PWM_RIGHT = pwm;
+		
 	}	
 }
 

@@ -24,6 +24,7 @@ interrupt void MOTOR_ISR (void)
 	//------------------------------------------------------------//
 	// Encoder Data Input
 	// Getting QEP value from motor moving ( 0 < value < 2048 )
+	// Because of cross soldered cable, needed to change between Right and Left.
 	L_motor.u16_qep_count = ( Uint16 )RightQepRegs.QPOSCNT;
 	R_motor.u16_qep_count = ( Uint16 )LeftQepRegs.QPOSCNT;
 	

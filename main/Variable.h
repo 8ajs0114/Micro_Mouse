@@ -28,7 +28,8 @@ __VARIABLE_EXT__ volatile Uint32 sensor_count;
 
 __VARIABLE_EXT__ long 	adc_value_sum;
 
- __VARIABLE_EXT__ Uint16 	i ;
+ __VARIABLE_EXT__ Uint16 	i, 
+ 						pwm;
 
 
 // MENU_ARRAY_CONST
@@ -41,6 +42,22 @@ __VARIABLE_EXT__ long 	adc_value_sum;
 #define 	SL 				GpioDataRegs.GPADAT.bit.GPIO15
 #define 	SU 				GpioDataRegs.GPADAT.bit.GPIO31
 #define 	SD 				GpioDataRegs.GPADAT.bit.GPIO30
+
+//------------------------------------------------------------//
+// MOTOR OUTPUT SETTING
+// IN1 : HIGH + IN2 : LOW = CW
+// IN1 : LOW + IN2 : HIGH = CCW
+// Because of cross soldered cable, needed to change between Right and Left.
+#define IN1_LEFT_SET					GpioDataRegs.GPASET.bit.GPIO6
+#define IN1_LEFT_CLEAR				GpioDataRegs.GPACLEAR.bit.GPIO6
+#define IN2_LEFT_SET					GpioDataRegs.GPASET.bit.GPIO7
+#define IN2_LEFT_CLEAR				GpioDataRegs.GPACLEAR.bit.GPIO7
+#define IN1_RIGHT_SET				GpioDataRegs.GPASET.bit.GPIO9
+#define IN1_RIGHT_CLEAR				GpioDataRegs.GPACLEAR.bit.GPIO9
+#define IN2_RIGHT_SET				GpioDataRegs.GPASET.bit.GPIO11
+#define IN2_RIGHT_CLEAR				GpioDataRegs.GPACLEAR.bit.GPIO11
+#define PWM_LEFT						EPwm5Regs.CMPA.half.CMPA
+#define PWM_RIGHT					EPwm6Regs.CMPA.half.CMPA
 
 //------------------------------------------------------------//
 // Motor Information
